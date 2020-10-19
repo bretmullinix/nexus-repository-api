@@ -72,7 +72,7 @@ may **"follow"** the repo and see the repo develop.
       ```
       
    1. For the following variable declaration, replace "\<your password\>" with
-      your nexus user name that is allowed to perform API calls.
+      your nexus password that is allowed to perform API calls.
       
       ```python
       password = "<your password>"
