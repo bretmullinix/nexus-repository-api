@@ -64,14 +64,14 @@ may **"follow"** the repo and see the repo develop.
 
 1. Open the **tests/test_swagger_nexus_api.py** file. Replace the following:
 
-   1. For the following variable declaration, replace "<your user name>" with
+   1. For the following variable declaration, replace "\<your user name\>" with
       your nexus user name that is allowed to perform API calls.
       
       ```python
       username = "<your user name>"
       ```
       
-   1. For the following variable declaration, replace "<your password>" with
+   1. For the following variable declaration, replace "\<your password\>" with
       your nexus user name that is allowed to perform API calls.
       
       ```python
