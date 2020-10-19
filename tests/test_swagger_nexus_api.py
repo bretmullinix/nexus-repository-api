@@ -1,6 +1,7 @@
 import unittest
 import swagger_client
 import base64
+import os
 from swagger_client import Configuration, FileBlobStoreApiCreateRequest, FileBlobStoreApiModel, \
     GenericBlobStoreApiResponse, DockerHostedApiRepository, DockerHostedRepositoryApiRequest, DockerAttributes, \
     HostedStorageAttributes
@@ -18,8 +19,9 @@ class TestSwaggerNexusAPI(unittest.TestCase):
 
     configuration = None
     authorization_header_value = None
-    username = "<your user name>"
-    password = "<your password>"
+    username = os.getenv('NEXUS_USER_NAME')
+    password = os.environ.get('NEXUS_PASSWORD')
+    nexus_server_url = os.getenv('NEXUS_URL')
     encoded_credentials = None
     api_client = None
     docker_repo_api_client = None
@@ -27,7 +29,7 @@ class TestSwaggerNexusAPI(unittest.TestCase):
     docker_repo_name = "my_docker_repo"
     def setUp(self):
         self.configuration = Configuration()
-        self.configuration.host = "https://nexus.example.com:8443/service/rest"
+        self.configuration.host =  self.nexus_server_url + "/service/rest"
         self.configuration.verify_ssl = False
         self.configuration.debug = True
 

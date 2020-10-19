@@ -1,3 +1,4 @@
 .idea/
 nexus_stub_output_folder/
 .travis.xml
+setUserNameAndPassword.sh

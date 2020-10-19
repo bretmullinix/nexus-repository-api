@@ -62,27 +62,20 @@ may **"follow"** the repo and see the repo develop.
 
 ### Execute some code against the Nexus repository.
 
-1. Open the **tests/test_swagger_nexus_api.py** file. Replace the following:
+1. Open up a terminal and set the following variables in your .bashrc file.
 
-   1. For the following variable declaration, replace "\<your user name\>" with
-      your nexus user name that is allowed to perform API calls.
-      
-      ```python
-      username = "<your user name>"
-      ```
-      
-   1. For the following variable declaration, replace "\<your password\>" with
-      your nexus password that is allowed to perform API calls.
-      
-      ```python
-      password = "<your password>"
-      ```
+   1. Set the environment variable **NEXUS_URL** to your Nexus server URL.  In my case, the url was 
+      `https://nexus.example.com:8443`.
    
-   1. In the setup method, replace the variable value of **self.configuration.host**
-      to your nexus server host URL.
-   
-   1. Change the appropriate properties for the Python tests to fit what you plan on
-      doing.
+   1. Set the environment variable **NEXUS_USER_NAME** to your Nexus user who has the privileges
+      to run commands against the Nexus API.
+      
+   1. Set the environment variable **NEXUS_PASSWORD** to your Nexus user password.
+
+
+1. Open the **tests/test_swagger_nexus_api.py** file. Change the appropriate properties for the Python tests 
+   to fit what you plan on doing.
+
 
 Once you are finished, you should be able to run the Python tests in the **test** folder.
 These tests can list, delete, and create blob stores.  The blob stores are the backing
