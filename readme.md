@@ -86,6 +86,7 @@ may **"follow"** the repo and see the repo develop.
 
 Once you are finished, you should be able to run the Python tests in the **test** folder.
 These tests can list, delete, and create blob stores.  The blob stores are the backing
-stores needed to store the repository data.
+stores needed to store the repository data.  Also, there is a test to create a docker
+host repository (private docker repository).
 
 The Python tests will be expanded over the next couple of weeks.
