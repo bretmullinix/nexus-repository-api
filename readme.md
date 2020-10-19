@@ -1,4 +1,4 @@
-# Create Ansible Module to Install Nexus Docker Repository
+# Using the Nexus API in Python and Ansible
 
 Last updated: 10.19.2020
 
