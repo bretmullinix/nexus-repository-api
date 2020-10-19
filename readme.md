@@ -42,7 +42,7 @@ may **"follow"** the repo and see the repo develop.
     1. **generate** --> Tells Swagger to generate code
     
     1. **\-i** --> The Nexus Server **swagger.json** file.  On my Nexus server, the file location is
-       here:   http://[host name]:8081/service/rest/swagger.json
+       here:   https://[host name]:8443/service/rest/swagger.json
        
        Replace **[host name]** with your host name or ip address.
        
