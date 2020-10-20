@@ -73,7 +73,7 @@ may **"follow"** the repo and see the repo develop.
    1. Set the environment variable **NEXUS_PASSWORD** to your Nexus user password.
 
 
-1.  HERE ARE A COUPLE OF WARNINGS BEFORE YOU EXECUTE TESTS:
+1.  HERE ARE A COUPLE OF <span style="color:red">WARNINGS</span> BEFORE YOU EXECUTE TESTS:
 
     1. Swagger generated **function/method** names might be different for each user.  For example, 
        I have the generated **function/method** called **create_repository35**.  In my case, the method implementation 
