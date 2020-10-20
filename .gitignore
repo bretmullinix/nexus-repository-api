@@ -2,3 +2,4 @@
 nexus_stub_output_folder/
 .travis.xml
 setUserNameAndPassword.sh
+__pycache__/
