@@ -1,5 +1,6 @@
 import swagger_client
-from swagger_client import FileBlobStoreApiCreateRequest, HostedStorageAttributes, DockerHostedRepositoryApiRequest
+from swagger_client import FileBlobStoreApiCreateRequest, HostedStorageAttributes, DockerHostedRepositoryApiRequest, \
+    HelmHostedRepositoryApiRequest
 from swagger_client import DockerAttributes
 
 from swagger_storage import SwaggerStorage
@@ -9,7 +10,7 @@ class SwaggerRepositories:
     api_client = None
     swagger_storage = None
 
-    def __init__(self,  api_client: swagger_client.api_client, swagger_storage: SwaggerStorage):
+    def __init__(self, api_client: swagger_client.api_client, swagger_storage: SwaggerStorage):
         self.api_client = api_client
         self.swagger_storage = swagger_storage
 
@@ -81,4 +82,26 @@ class SwaggerRepositories:
                                                    docker=docker_attributes)
 
         repository_api.create_repository35(body=request)  # Swagger doesn't define a good name for creating docker
+        # repositories
+
+    def create_helm_hosted_repository(self, helm_blob_store_name, helm_repo_name):
+        if self.is_repo(helm_repo_name):
+            return;
+        if not self.swagger_storage.is_blob_store(helm_blob_store_name):
+            self.swagger_storage.create_blob_store(helm_blob_store_name)
+
+        repository_api = swagger_client.RepositoryManagementApi(self.api_client)
+
+        helm_storage_attributes = HostedStorageAttributes(
+            blob_store_name=helm_blob_store_name,
+            strict_content_type_validation=True,
+            write_policy="allow_once"
+        )
+
+        request = HelmHostedRepositoryApiRequest(name=helm_repo_name,
+                                                 storage=helm_storage_attributes,
+                                                 online=True,
+                                                 cleanup=None)
+
+        repository_api.create_repository9(body=request)  # Swagger doesn't define a good name for creating helm
         # repositories

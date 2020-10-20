@@ -22,8 +22,8 @@ class TestSwaggerNexusAPI(unittest.TestCase):
     docker_blob_store = "my_docker_repo_store"
     docker_repo_name = "my_docker_repo"
 
-    helm_blob_store = "my_helm_repo_store"
-    helm_store = "my_helm_store"
+    helm_blob_store = "my_helm_store"
+    helm_repo = "my_helm_repo"
 
     def setUp(self):
         swagger_configuration = SwaggerConfiguration()
@@ -60,12 +60,13 @@ class TestSwaggerNexusAPI(unittest.TestCase):
             print('Your repo url is---> ', repo.url)
 
     def test_delete_repository(self):
-        self.swagger_repositories.delete_repository(self.docker_repo_name)
+        self.swagger_repositories.delete_repository(self.helm_repo)
 
     def test_create_docker_hosted_repository(self):
         self.swagger_repositories.create_docker_hosted_repository(self.docker_blob_store, self.docker_repo_name)
 
-
+    def test_create_helm_hosted_repository(self):
+        self.swagger_repositories.create_helm_hosted_repository(self.helm_blob_store, self.helm_repo)
 
 if __name__ == '__main__':
     unittest.main()
