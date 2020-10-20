@@ -57,21 +57,24 @@ class SwaggerRepositories:
         repository_api = swagger_client.RepositoryManagementApi(self.api_client)
         repository_api.delete_repository(name)
 
-    def create_docker_hosted_repository(self, name):
-        self.delete_repository(name)
-        self.swagger_storage.create_blob_store(name)
+    def create_docker_hosted_repository(self, docker_blob_store_name, docker_repo_name):
+        if self.is_repo(docker_repo_name):
+            return;
+        if not self.swagger_storage.is_blob_store(docker_blob_store_name):
+            self.swagger_storage.create_blob_store(docker_blob_store_name)
+
         repository_api = swagger_client.RepositoryManagementApi(self.api_client)
         docker_attributes = DockerAttributes(https_port=8085,
                                              force_basic_auth=True,
                                              v1_enabled=True)
 
         docker_blob_store_attributes = HostedStorageAttributes(
-            blob_store_name=name,
+            blob_store_name=docker_blob_store_name,
             strict_content_type_validation=True,
             write_policy="allow_once"
         )
 
-        request = DockerHostedRepositoryApiRequest(name=name,
+        request = DockerHostedRepositoryApiRequest(name=docker_repo_name,
                                                    storage=docker_blob_store_attributes,
                                                    online=True,
                                                    cleanup=None,

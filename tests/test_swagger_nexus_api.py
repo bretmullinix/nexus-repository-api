@@ -38,10 +38,14 @@ class TestSwaggerNexusAPI(unittest.TestCase):
     def test_list_blob_stores(self):
         self.swagger_storage.list_blob_stores()
 
-    def test_delete_blob_store(self):
+    def test_delete_docker_host_file_blob_store(self):
+        # In order to delete the docker blob store, we must delete any dependent objects.  In this test suite,
+        # the docker file blob store depends on the docker host repo being deleted.
+        if self.swagger_repositories.is_repo(self.docker_repo_name):
+            self.swagger_repositories.delete_repository(self.docker_repo_name)
         self.swagger_storage.delete_blob_store(self.docker_blob_store)
 
-    def test_create_file_blob_store(self):
+    def test_create_docker_host_file_blob_store(self):
         self.swagger_storage.create_blob_store(self.docker_blob_store)
 
     def test_list_repositories(self):
@@ -59,7 +63,7 @@ class TestSwaggerNexusAPI(unittest.TestCase):
         self.swagger_repositories.delete_repository(self.docker_repo_name)
 
     def test_create_docker_hosted_repository(self):
-        self.swagger_repositories.create_docker_hosted_repository(self.docker_repo_name)
+        self.swagger_repositories.create_docker_hosted_repository(self.docker_blob_store, self.docker_repo_name)
 
 
 
