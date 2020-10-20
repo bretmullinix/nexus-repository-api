@@ -94,7 +94,6 @@ may **"follow"** the repo and see the repo develop.
       use the docker blob store called **my_docker_repo_store**, and the docker host repository 
       called **my_docker_repo**.
 
-
 1. Open the **tests/test_swagger_nexus_api.py** file. Change the appropriate properties for the Python tests 
    to fit what you plan on doing.
 
