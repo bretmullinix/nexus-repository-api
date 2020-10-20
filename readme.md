@@ -73,6 +73,28 @@ may **"follow"** the repo and see the repo develop.
    1. Set the environment variable **NEXUS_PASSWORD** to your Nexus user password.
 
 
+1.  HERE ARE A COUPLE OF WARNINGS BEFORE YOU EXECUTE TESTS:
+
+   1. Swagger generated **function/method** names might be different for each user.  For example, 
+      I have the generated **function/method** called **create_repository35**.  In my case, the method implementation 
+      creates a docker hosted repository.  Does Swagger generate the code to create a docker hosted repository in
+      the **create_repository35** function/method for every user? Please make sure you take a look at 
+      the **create_repository35** method definition. The method should eventually call a method with 
+      the following text **/v1/repositories/docker/hosted', 'POST'**.
+      
+      If you find out that you have a different generated method name for the API, you must change the implementation
+      code.  For example, in the case of **create_repository35**, the implementation code calls this method in the
+      **swagger_repositories.create_docker_hosted_repository** method.
+      
+      The same goes for any other generic method.  Please be sure to check the implementation code to ensure you
+      are calling the correct APIs.
+      
+   1. In the **test_swagger_nexus_api.py** class, make sure you aren't creating and deleting repositories and blob
+      stores you plan on using.  These repositories and blob stores are for testing only.  Currently, the tests
+      use the docker blob store called **my_docker_repo_store**, and the docker host repository 
+      called **my_docker_repo**.
+
+
 1. Open the **tests/test_swagger_nexus_api.py** file. Change the appropriate properties for the Python tests 
    to fit what you plan on doing.
 
