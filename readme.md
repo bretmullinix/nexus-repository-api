@@ -1,6 +1,6 @@
 # Using the Nexus API in Python and Ansible
 
-Last updated: 10.19.2020
+Last updated: 10.20.2020
 
 ## Purpose
 
@@ -87,7 +87,7 @@ may **"follow"** the repo and see the repo develop.
        **swagger_repositories.create_docker_hosted_repository** method.
       
        The same goes for any other generic method.  Please be sure to check the implementation code to ensure you
-       are calling the correct APIs.
+       are calling the correct APIs.blue
       
     1. In the **test_swagger_nexus_api.py** class, make sure you aren't creating and deleting repositories and blob
        stores you plan on using.  These repositories and blob stores are for testing only.  Currently, the tests
